@@ -1,0 +1,2620 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LoginApp extends JFrame {
+    
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JButton loginButton;
+
+    public LoginApp() {
+        setTitle("Login Form");
+        setSize(300, 150);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2,20,20));
+
+        
+        JLabel usernameLabel = new JLabel("Username:");
+        usernameLabel.setBounds(300, 300, 100, 100);
+        
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds(300, 500, 100, 100);
+        usernameField = new JTextField();
+        usernameField.setBounds(450, 300, 100, 100);
+        passwordField = new JPasswordField();
+        passwordField.setBounds(450, 500, 100, 100);
+        loginButton = new JButton("Login");
+        loginButton.setBounds(400, 600, 100, 100);
+
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(new JLabel()); // Empty label for spacing
+        panel.add(loginButton);
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
+                char[] passwordChars = passwordField.getPassword();
+                String password = new String(passwordChars);
+
+                // Replace this with your authentication logic
+                if (username.equals("1") && password.equals("1")) {
+                    // Open a new window upon successful login
+                    openNewWindow();
+                } else {
+                    JOptionPane.showMessageDialog(LoginApp.this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // Clear the fields after login attempt
+                usernameField.setText("");
+                passwordField.setText("");
+            }
+        });
+
+        add(panel);
+        setLocationRelativeTo(null); // Center the window
+    }
+
+    // Method to open a new window
+    private void openNewWindow() {
+        JFrame mainJFrame = new JFrame("Main Window");
+        mainJFrame.setSize(1500, 800);
+        mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 4)); // 3 rows and 4 columns for the buttons
+    
+        // Create and add 12 image icon buttons
+        for (int i = 1; i <= 12; i++) {
+            String imagePath = "/Resources/" + i + ".png"; // Construct the image path
+
+            // Load an ImageIcon from the resource
+            ImageIcon icon = new ImageIcon(LoginApp.class.getResource(imagePath));
+
+            JButton button = new JButton(icon);
+            final int buttonNumber = i;
+
+            // Add an ActionListener to each button to open a new window
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Call the specific method for the clicked button
+                    switch ( buttonNumber) {
+                        case 1:
+                            openWindowForButton1();
+                            break;
+                        case 2:
+                            openWindowForButton2();
+                            break;
+                        case 3:
+                            openWindowForButton3();
+                            break;
+                        case 4:
+                            openWindowForButton4();
+                            break;
+                        case 5:
+                            openWindowForButton5();
+                            break;
+                        case 6:
+                            openWindowForButton6();
+                            break;
+                        case 7:
+                            openWindowForButton7();
+                            break;
+                        case 8:
+                            openWindowForButton8();
+                            break;
+                        case 9:
+                            openWindowForButton9();
+                            break;
+                        case 10:
+                            openWindowForButton10();
+                            break;
+                        case 11:
+                            openWindowForButton11();
+                            break;
+                        case 12:
+                            openWindowForButton12();
+                            break;
+                           
+                    }
+                }
+            });
+
+            buttonPanel.add(button);
+        }
+        
+    
+        mainJFrame.add(buttonPanel);
+        mainJFrame.setLocationRelativeTo(null);
+        mainJFrame.setVisible(true);
+    }
+    private void openWindowForButton1() {
+         JFrame individualWindow1 = new JFrame("Individual Window");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        
+        individualWindow1.setLayout(new BorderLayout());
+        // individualWindow1.add(imageLabel);
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_1_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_1_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_1_3();
+            }
+        });
+             }
+         });
+         JButton pr4= new JButton("Question 4");
+        pr4.setSize(40, 30);
+         pr4.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_1_4();
+            }
+        });
+             }
+         });
+         JButton pr5= new JButton("Question 5");
+        pr5.setSize(40, 30);
+         pr5.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_1_5();
+            }
+        });
+             }
+         });
+         JTextArea Q1 = new JTextArea();
+         Q1.setText(
+            "1) Develop a program using label to display message “welcome to Java”.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_1_1 {\r\n" + //
+                    "public static void main(String[] args) {\r\n" + //
+                    "Frame fr= new Frame(\"Labels Example\");\r\n" + //
+                    "fr.setSize(500, 400);\r\n" + //
+                    "fr.setVisible(true);\r\n" + //
+                    "Label l1 = new Label(\"This Program is Developed by Soham Mahajan.\");\r\n" + //
+                    "Label Welcome = new Label(\"Welcome to Java\");\r\n" + //
+                    "fr.setLayout(new FlowLayout());\r\n" + //
+                    "fr.add(l1);\r\n" + //
+                    "fr.add(Welcome);\r\n" + //
+                    "}\r\n" + //
+                    "}"
+         );
+         JTextArea Q2 = new JTextArea();
+         Q2.setText(
+            "2) Develop a programme to select multiple languages known to user. (e.g Marathi, Hindi, \r\n" + //
+                    "English, Sanskrit).\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.Frame;\r\n" + //
+                    "public class Practical_1_2 {\r\n" + //
+                    "public static void main(String[] args) {\r\n" + //
+                    "Frame fr= new Frame(\"Checkbox Example\");\r\n" + //
+                    "fr.setSize(500, 400);\r\n" + //
+                    "fr.setVisible(true);\r\n" + //
+                    " fr.setLayout(new FlowLayout());\r\n" + //
+                    "Checkbox ch1=new Checkbox(\"Marathi\");\r\n" + //
+                    "Checkbox ch2=new Checkbox(\"Hindi\");\r\n" + //
+                    "Checkbox ch3=new Checkbox(\"English\");\r\n" + //
+                    "Checkbox ch4=new Checkbox(\"Sanskrit\");\r\n" + //
+                    " fr.add(ch1);\r\n" + //
+                    " fr.add(ch2);\r\n" + //
+                    " fr.add(ch3);\r\n" + //
+                    " fr.add(ch4);\r\n" + //
+                    " }\r\n" + //
+                    " }\r"
+         );
+         JTextArea Q3 = new JTextArea();
+         Q3.setText(
+            "3) Write a programme to create three buttons with caption OK, RESET and CANCEL .\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_1_3 {\r\n" + //
+                    " public static void main(String[] args) {\r\n" + //
+                    " Frame fr= new Frame(\"Buttons Example\");\r\n" + //
+                    "fr.setSize(500, 400);\r\n" + //
+                    "fr.setVisible(true); \r\n" + //
+                    " fr.setLayout(new FlowLayout());\r\n" + //
+                    " Button b1 = new Button(\"OK\");\r\n" + //
+                    " Button b2 = new Button(\"RESET\");\r\n" + //
+                    " Button b3 = new Button(\"CANCEL\");\r\n" + //
+                    " fr.add(b1);\r\n" + //
+                    " fr.add(b2);\r\n" + //
+                    " fr.add(b3);\r\n" + //
+                    " }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea Q4 = new JTextArea();
+         Q4.setText(
+            "4) Design an applet/application to demonstrate the use of radio button and checkbox.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_1_4 {\r\n" + //
+                    " private static CheckboxGroup gender;\r\n" + //
+                    " public static void main(String[] args) {\r\n" + //
+                    " Frame fr= new Frame(\"CheckBox and Radio button Example\");\r\n" + //
+                    "fr.setSize(500, 400);\r\n" + //
+                    "fr.setVisible(true); \r\n" + //
+                    " fr.setLayout(new FlowLayout());\r\n" + //
+                    " gender = new CheckboxGroup();\r\n" + //
+                    " Label l = new Label(\"Skills:\");\r\n" + //
+                    " Label l1 = new Label(\"Gender:\");\r\n" + //
+                    " Label l2 = new Label(\"This program is developed By Soham Mahajan!\");\r\n" + //
+                    " Checkbox ch = new Checkbox(\"Java\");\r\n" + //
+                    " Checkbox ch1 = new Checkbox(\"Python\");\r\n" + //
+                    " Checkbox ch2 = new Checkbox(\"PHP\");\r\n" + //
+                    " Checkbox ch3 = new Checkbox(\"FLutter\");\r\n" + //
+                    " Checkbox ch4 = new Checkbox(\"HTML\");\r\n" + //
+                    " Checkbox radio1 = new Checkbox(\"Male\", gender, false);\r\n" + //
+                    " Checkbox radio2 = new Checkbox(\"Female\", gender, false);\r\n" + //
+                    " Checkbox radio3 = new Checkbox(\"Others\", gender, false);\r\n" + //
+                    " fr.add(l2);\r\n" + //
+                    " fr.add(l);\r\n" + //
+                    " fr.add(ch);\r\n" + //
+                    " fr.add(ch1);\r\n" + //
+                    " fr.add(ch2);\r\n" + //
+                    " fr.add(ch3);\r\n" + //
+                    "fr.add(ch4);\r\n" + //
+                            " fr.add(l1);\r\n" + //
+                            " fr.add(radio1);\r\n" + //
+                            " fr.add(radio2);\r\n" + //
+                            " fr.add(radio3);\r\n" + //
+                            " }\r\n" + //
+                            "}\r"
+         );
+         JTextArea Q5 = new JTextArea();
+         Q5.setText(
+            "5) Design an applet /application to create from using Text Field, Text Area Button and \r\n" + //
+                    "Label.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_1_5 {\r\n" + //
+                    " public static void main(String[] args) {\r\n" + //
+                    " Frame fr = new Frame(\"Textfield, text area, button and label example\");\r\n" + //
+                    " fr.setSize(400, 400);\r\n" + //
+                    " fr.setVisible(true);\r\n" + //
+                    " fr.setLayout(new FlowLayout());\r\n" + //
+                    " Label l1 = new Label(\" Name\");\r\n" + //
+                    " Button bl = new Button(\"Enter\");\r\n" + //
+                    " TextField tl = new TextField(\"10\");\r\n" + //
+                    " tl.setText(\"text field\");\r\n" + //
+                    " TextArea tal = new TextArea();\r\n" + //
+                    " fr.add(l1);\r\n" + //
+                    " fr.add(tl);\r\n" + //
+                    " fr.add(bl);\r\n" + //
+                    " fr.add(tal);\r\n" + //
+                    " }\r\n" + //
+                    "}"
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr4.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr5.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(Q1);
+         bp.add(pr1);
+          bp.add(Q2);
+         bp.add(pr2);
+         bp.add(Q3);
+         bp.add(pr3);
+         bp.add(Q4);
+         bp.add(pr4);
+         bp.add(Q5);
+         bp.add(pr5);
+         JP.add(bp);
+        
+    }
+    private void openWindowForButton2() {
+       JFrame individualWindow1 = new JFrame("Individual Window");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+       
+        individualWindow1.setLayout(new BorderLayout());
+        // individualWindow1.add(imageLabel);
+        individualWindow1.add(SP,BorderLayout.CENTER);
+       
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_2_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_2_2();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1)\tDevelop an applet/application using list components to add names of 10 different cities .\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "class Practical_2_1 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Frame fr = new Frame(\"List Example\");\r\n" + //
+                    "        fr.setSize(350, 300);\t\r\n" + //
+                    "        fr.setLayout(new FlowLayout());\r\n" + //
+                    "        fr.setVisible(true);\r\n" + //
+                    "        List flower = new List(10, false);\r\n" + //
+                    "        Label l = new Label(\"List of 10 Cities: \");\r\n" + //
+                    "        flower.add(\"Nanded\");\r\n" + //
+                    "        flower.add(\"Parbhani\");\r\n" + //
+                    "        flower.add(\"Latur\");\r\n" + //
+                    "        flower.add(\"Bhopal\");\r\n" + //
+                    "        flower.add(\"Nashik\");\r\n" + //
+                    "        flower.add(\"Ladakh\");\r\n" + //
+                    "        flower.add(\"Delhi\");\r\n" + //
+                    "        flower.add(\"Solapur\");\r\n" + //
+                    "        flower.add(\"Nagpur\");\r\n" + //
+                    "        flower.add(\"Pune\");\r\n" + //
+                    "        fr.add(l);\r\n" + //
+                    "        fr.add(flower);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2)\tDevelop applet/application to select multiple names of newspapers.\r\n" + //
+                    " import java.awt.*;\r\n" + //
+                    "public class Practical_2_2 {\r\n" + //
+                    "public static void main(String[] args) {\r\n" + //
+                    "    Frame fr = new Frame(\"Choice Example\");\r\n" + //
+                    "    fr.setSize(350, 300);\r\n" + //
+                    "        fr.setLayout(new FlowLayout());\r\n" + //
+                    "        fr.setVisible(true);\r\n" + //
+                    "        Label l = new Label(\"Select a Newspaper\");\r\n" + //
+                    "        Choice ch = new Choice();\r\n" + //
+                    "        ch.setBounds(100, 100, 75, 75); \r\n" + //
+                    "        ch.add(\"The Times of India\");\r\n" + //
+                    "        ch.add(\"Lokmat\");\r\n" + //
+                    "        ch.add(\"Sakal\");\r\n" + //
+                    "        ch.add(\"Prajawani\");\r\n" + //
+                    "        ch.add(\"Punyanagri\");\r\n" + //
+                    "        fr.add(l);\r\n" + //
+                    "        fr.add(ch);\r\n" + //
+                    "}    \r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+        
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         q1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         
+         JP.add(bp);
+    }
+    private void openWindowForButton3() {
+        JFrame individualWindow1 = new JFrame("Practical 3");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_3_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_3_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_3_3();
+            }
+        });
+             }
+         });
+         JButton pr4= new JButton("Question 4");
+        pr4.setSize(40, 30);
+         pr4.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_3_4();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1)\tWrite a Java program to demonstrate grid of 5 *2.\t\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_3_1 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Frame frame = new Frame(\"5x5 Grid Layout Demo\");\r\n" + //
+                    "        frame.setSize(400, 400);\r\n" + //
+                    "        frame.setLayout(new GridLayout(5,5));\r\n" + //
+                    "        Button b1=new Button(\"1\");\r\n" + //
+                    "        Button b2=new Button(\"2\");\r\n" + //
+                    "        Button b3=new Button(\"3\");\r\n" + //
+                    "        Button b4=new Button(\"4\");\r\n" + //
+                    "        Button b5=new Button(\"5\");\r\n" + //
+                    "        Button b6=new Button(\"6\");\r\n" + //
+                    "        Button b7=new Button(\"7\");\r\n" + //
+                    "        Button b8=new Button(\"8\");\r\n" + //
+                    "        Button b9=new Button(\"9\");\r\n" + //
+                    "        Button b10=new Button(\"10\");\r\n" + //
+                    "        Button b11=new Button(\"11\");\r\n" + //
+                    "        Button b12=new Button(\"12\");\r\n" + //
+                    "        Button b13=new Button(\"13\");\r\n" + //
+                    "        Button b14=new Button(\"14\");\r\n" + //
+                    "        Button b15=new Button(\"15\");\r\n" + //
+                    "        Button b16=new Button(\"16\");\r\n" + //
+                    "        Button b17=new Button(\"17\");\r\n" + //
+                    "        Button b18=new Button(\"18\");\r\n" + //
+                    "        Button b19=new Button(\"19\");\r\n" + //
+                    "        Button b20=new Button(\"20\");\r\n" + //
+                    "        Button b21=new Button(\"21\");\r\n" + //
+                    "        Button b22=new Button(\"22\");\r\n" + //
+                    "        Button b23=new Button(\"23\");\r\n" + //
+                    "        Button b24=new Button(\"24\");\r\n" + //
+                    "        Button b25=new Button(\"25\");\r\n" + //
+                    "        frame.setVisible(true);\r\n" + //
+                    "        frame.add(b1);\r\n" + //
+                    "        frame.add(b2);\r\n" + //
+                    "        frame.add(b3);\r\n" + //
+                    "        frame.add(b4);\r\n" + //
+                    "        frame.add(b5);\r\n" + //
+                    "        frame.add(b6);\r\n" + //
+                    "        frame.add(b7);\r\n" + //
+                    "        frame.add(b8);\r\n" + //
+                    "        frame.add(b9);\r\n" + //
+                    "        frame.add(b10);\r\n" + //
+                    "        frame.add(b11);\r\n" + //
+                    "        frame.add(b12);\r\n" + //
+                    "        frame.add(b13);\r\n" + //
+                    "        frame.add(b14);\r\n" + //
+                    "        frame.add(b15);\r\n" + //
+                    "        frame.add(b16);\r\n" + //
+                    "        frame.add(b17);\r\n" + //
+                    "        frame.add(b18);\r\n" + //
+                    "        frame.add(b19);\r\n" + //
+                    "        frame.add(b20);\r\n" + //
+                    "        frame.add(b21);\r\n" + //
+                    "        frame.add(b22);\r\n" + //
+                    "        frame.add(b23);\r\n" + //
+                    "        frame.add(b24);\r\n" + //
+                    "        frame.add(b25);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2)\t Write a program to display The Number on Button from 0 to 9.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_3_2 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Frame frame = new Frame(\"0 To 9 Number on button \");\r\n" + //
+                    "        frame.setSize(400, 400);\t\r\n" + //
+                    "        frame.setLayout(new GridLayout(5,5));\r\n" + //
+                    "        Button b1=new Button(\"1\");\r\n" + //
+                    "        Button b2=new Button(\"2\");\r\n" + //
+                    "        Button b3=new Button(\"3\");\r\n" + //
+                    "        Button b4=new Button(\"4\");\r\n" + //
+                    "        Button b5=new Button(\"5\");\r\n" + //
+                    "        Button b6=new Button(\"6\");\r\n" + //
+                    "        Button b7=new Button(\"7\");\r\n" + //
+                    "        Button b8=new Button(\"8\");\r\n" + //
+                    "        Button b9=new Button(\"9\");\r\n" + //
+                    "        Button b10=new Button(\"0\");\r\n" + //
+                    "        frame.setVisible(true);\r\n" + //
+                    "        frame.add(b10);\r\n" + //
+                    "        frame.add(b1);\r\n" + //
+                    "        frame.add(b2);\r\n" + //
+                    "        frame.add(b3);\r\n" + //
+                    "        frame.add(b4);\r\n" + //
+                    "        frame.add(b5);\r\n" + //
+                    "        frame.add(b6);\r\n" + //
+                    "        frame.add(b7);\r\n" + //
+                    "        frame.add(b8);\r\n" + //
+                    "        frame.add(b9);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         ); 
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "Write a program to generate following output"+//
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_3_3 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Frame fr= new Frame(\"GridLayout Demo\");\r\n" + //
+                    "        fr.setSize(500, 300);\r\n" + //
+                    "        fr.setLayout(new GridLayout(3, 2, 10, 10));\r\n" + //
+                    "        fr.setVisible(true);\r\n" + //
+                    "        Button b1=new Button(\"Button 1\");\r\n" + //
+                    "        Button b2=new Button(\"Button 2\");\r\n" + //
+                    "        Button b3=new Button(\"Button 3\");\r\n" + //
+                    "        Button b4=new Button(\"Button 4\");\r\n" + //
+                    "        Button b5=new Button(\"Button 5\");\r\n" + //
+                    "        fr.add(b1);\r\n" + //
+                    "        fr.add(b2);\r\n" + //
+                    "        fr.add(b3);\r\n" + //
+                    "        fr.add(b4);\r\n" + //
+                    "        fr.add(b5);\r\n" + //
+                    "    }\r\n" + //
+                    ""
+         );
+         JTextArea q4 = new JTextArea();
+         q4.setText(
+            "1)\t.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "public class Practical_3_4 extends Frame {\r\n" + //
+                    "    private Button btnNorth, btnSouth, btnCenter, btnEast, btnWest;\r\n" + //
+                    "     public  Practical_3_4(){\r\n" + //
+                    "        setLayout(new BorderLayout(3, 3)); \r\n" + //
+                    "         btnNorth = new Button(\"NORTH\") ; \r\n" + //
+                    "         add(btnNorth, BorderLayout.NORTH); \r\n" + //
+                    "         btnSouth = new Button(\"SOUTH\"); \r\n" + //
+                    "         add( btnSouth, BorderLayout.SOUTH); \r\n" + //
+                    "         btnCenter = new Button( \"CENTER\"); \r\n" + //
+                    "         add(btnCenter, BorderLayout.CENTER); \r\n" + //
+                    "         btnEast = new Button( \"EAST\"); \r\n" + //
+                    "         add(btnEast, BorderLayout . EAST); \r\n" + //
+                    "         btnWest = new Button(\"WEST\"); \r\n" + //
+                    "         add(btnWest, BorderLayout.WEST); \r\n" + //
+                    "         setTitle( \"Border Layout Demo\"); \r\n" + //
+                    "         setSize(280, 150); \r\n" + //
+                    "         setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "      new Practical_3_4();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr4.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         bp.add(q4);
+         bp.add(pr4);
+         
+         JP.add(bp);
+    }
+    private void openWindowForButton4() {
+        JFrame individualWindow1 = new JFrame("Practical 4");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_4_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_4_2();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1)\tWrite Java program to display following output..\r\n" + //
+                    "import java.awt.Button;\r\n" + //
+                    "import java.awt.GridBagConstraints;\r\n" + //
+                    "import java.awt.GridBagLayout;\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_4_1 extends JFrame {\r\n" + //
+                    "    public Practical_4_1() {\r\n" + //
+                    "        GridBagLayout grid = new GridBagLayout();\r\n" + //
+                    "        GridBagConstraints gbc = new GridBagConstraints();\r\n" + //
+                    "        setLayout(grid);\r\n" + //
+                    "        setTitle(\"GridBag Layout Example\");\r\n" + //
+                    "        GridBagLayout layout = new GridBagLayout();\r\n" + //
+                    "        this.setLayout(layout);\r\n" + //
+                    "        gbc.fill = GridBagConstraints.HORIZONTAL;\r\n" + //
+                    "        gbc.gridx = 0;\r\n" + //
+                    "        gbc.gridy = 0;\r\n" + //
+                    "        this.add(new Button(\"Button One\"), gbc);\r\n" + //
+                    "        gbc.gridx = 1;\r\n" + //
+                    "        gbc.gridy = 0;\r\n" + //
+                    "        this.add(new Button(\"Button Two\"), gbc);\r\n" + //
+                    "        gbc.fill = GridBagConstraints.HORIZONTAL;\r\n" + //
+                    "        gbc.ipady = 20;\r\n" + //
+                    "        gbc.gridx = 0;\r\n" + //
+                    "        gbc.gridy = 1;\r\n" + //
+                    "        this.add(new Button(\"Button Three\"), gbc);\r\n" + //
+                    "        gbc.gridx = 1;\r\n" + //
+                    "        gbc.gridy = 1;\r\n" + //
+                    "        this.add(new Button(\"Button Four\"), gbc);\r\n" + //
+                    "        gbc.gridx = 0;\r\n" + //
+                    "        gbc.gridy = 2;\r\n" + //
+                    "        gbc.fill = GridBagConstraints.HORIZONTAL;\r\n" + //
+                    "        gbc.gridwidth = 2;\r\n" + //
+                    "        this.add(new Button(\"Button Five\"), gbc);\r\n" + //
+                    "        setSize(300, 300);\r\n" + //
+                    "        setPreferredSize(getSize());\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_4_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2)\tWrite Java Program to display following output..\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_4_2 extends Frame {\r\n" + //
+                    "    Practical_4_2() {\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        setSize(500, 300);\r\n" + //
+                    "        \r\n" + //
+                    "        Label lblName = new Label(\"Name\");\r\n" + //
+                    "        TextField txtName = new TextField(\"10\");\r\n" + //
+                    "        Label lblComments = new Label(\"Comments\");\r\n" + //
+                    "        TextArea textAreaComments = new TextArea(6, 15);\r\n" + //
+                    "        Button btnSubmit = new Button(\"Submit\");\r\n" + //
+                    "        \r\n" + //
+                    "        setLayout(new GridBagLayout());\r\n" + //
+                    "        GridBagConstraints gc = new GridBagConstraints();\r\n" + //
+                    "        \r\n" + //
+                    "        add(lblName, gc, 0, 0, 1, 1, 0, 0);\r\n" + //
+                    "        add(txtName, gc, 1, 0, 1, 1, 0, 20);\r\n" + //
+                    "        add(lblComments, gc, 0, 1, 1, 1, 0, 0);\r\n" + //
+                    "        add(textAreaComments, gc, 1, 1, 1, 1, 0, 60);\r\n" + //
+                    "        add(btnSubmit, gc, 0, 2, 2, 1, 0, 20);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    void add(Component comp, GridBagConstraints gc, int x, int y, int w, int h, int wx, int wy) {\r\n" + //
+                    "        gc.gridx = x;\r\n" + //
+                    "        gc.gridy = y;\r\n" + //
+                    "        gc.gridwidth = w;\r\n" + //
+                    "        gc.gridheight = h;\r\n" + //
+                    "        gc.weightx = wx;\r\n" + //
+                    "        gc.weighty = wy;\r\n" + //
+                    "        add(comp, gc);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_4_2();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         JP.add(bp);
+    }
+    private void openWindowForButton5() {
+        JFrame individualWindow1 = new JFrame("Practical 5");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        
+        
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_5_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_5_2();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1)\tWrite a program which creates menu of different colours and disabled menu items for black colour.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "public class Practical_5_1 extends Frame implements ActionListener {\r\n" + //
+                    "    private MenuBar menuBar;\r\n" + //
+                    "    private Menu colorMenu;\r\n" + //
+                    "    private MenuItem redItem, greenItem, blueItem, blackItem;\r\n" + //
+                    "    public Practical_5_1() {\r\n" + //
+                    "        initUI();\r\n" + //
+                    "    }\r\n" + //
+                    "    private void initUI() {\r\n" + //
+                    "        setTitle(\"Color Menu Example\");\r\n" + //
+                    "        setSize(400, 300);\r\n" + //
+                    "        setLayout(new BorderLayout());\r\n" + //
+                    "        menuBar = new MenuBar();\r\n" + //
+                    "        colorMenu = new Menu(\"Colors\");\r\n" + //
+                    "        redItem = new MenuItem(\"Red\");\r\n" + //
+                    "        greenItem = new MenuItem(\"Green\");\r\n" + //
+                    "        blueItem = new MenuItem(\"Blue\");\r\n" + //
+                    "        blackItem = new MenuItem(\"Black\");\r\n" + //
+                    "        redItem.addActionListener(this);\r\n" + //
+                    "        greenItem.addActionListener(this);\r\n" + //
+                    "        blueItem.addActionListener(this);\r\n" + //
+                    "        blackItem.addActionListener(this);\r\n" + //
+                    "        colorMenu.add(redItem);\r\n" + //
+                    "        colorMenu.add(greenItem);\r\n" + //
+                    "        colorMenu.add(blueItem);\r\n" + //
+                    "        colorMenu.addSeparator(); \r\n" + //
+                    "        colorMenu.add(blackItem);\r\n" + //
+                    "        blackItem.setEnabled(false);\r\n" + //
+                    "        menuBar.add(colorMenu);\r\n" + //
+                    "        setMenuBar(menuBar);\r\n" + //
+                    "        addWindowListener(new WindowAdapter() {\r\n" + //
+                    "            public void windowClosing(WindowEvent e) {\r\n" + //
+                    "                System.exit(0);\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "    public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "        String command = e.getActionCommand();\r\n" + //
+                    "        if (command.equals(\"Red\")) {\r\n" + //
+                    "            setBackground(Color.RED);\r\n" + //
+                    "        } else if (command.equals(\"Green\")) {\r\n" + //
+                    "            setBackground(Color.GREEN);\r\n" + //
+                    "        } else if (command.equals(\"Blue\")) {\r\n" + //
+                    "            setBackground(Color.BLUE);\r\n" + //
+                    "        }\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {   \r\n" + //
+                    "            new Practical_5_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2)\tFind errors in the following program and display output as shown below.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_5_2 extends Frame {\r\n" + //
+                    "    MenuBar mb;\r\n" + //
+                    "    MenuItem m1, m2, m3, m4;\r\n" + //
+                    "    Menu mn;\r\n" + //
+                    "    MenuShortcut ms;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_5_2() {\r\n" + //
+                    "        setTitle(\"MenuBar Demo\");\r\n" + //
+                    "        setSize(500, 500);\r\n" + //
+                    "        setLayout(null);\r\n" + //
+                    "        \r\n" + //
+                    "        ms = new MenuShortcut(KeyEvent.VK_X);\r\n" + //
+                    "        mn = new Menu(\"File\");\r\n" + //
+                    "        mb = new MenuBar();\r\n" + //
+                    "        m1 = new MenuItem(\"New...\");\r\n" + //
+                    "        m2 = new MenuItem(\"Open...\");\r\n" + //
+                    "        m3 = new MenuItem(\"Save As...\");\r\n" + //
+                    "        m4 = new MenuItem(\"Exit\", ms);\r\n" + //
+                    "        mn.add(m1);\r\n" + //
+                    "        mn.add(m2);\r\n" + //
+                    "        mn.add(m3);\r\n" + //
+                    "        mn.addSeparator();\r\n" + //
+                    "        mn.add(m4);\r\n" + //
+                    "        mb.add(mn);\r\n" + //
+                    "        setMenuBar(mb); \r\n" + //
+                    "addWindowListener(new WindowAdapter() {\r\n" + //
+                    "            public void windowClosing(WindowEvent e) {\r\n" + //
+                    "                System.exit(0);\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Practical_5_2 md = new Practical_5_2();\r\n" + //
+                    "        md.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         
+         JP.add(bp);
+    }
+    private void openWindowForButton6() {
+        JFrame individualWindow1 = new JFrame("Practical 6");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_6_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_6_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_6_3();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1)\tWrite a program code to generate the following output.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_6_1 extends JFrame implements ActionListener {\r\n" + //
+                    "    private JComboBox<String> cityComboBox;\r\n" + //
+                    "    private JLabel currentCityLabel;\r\n" + //
+                    "\r\n" + //
+                    "    public Practical_6_1() {\r\n" + //
+                    "        setTitle(\"City ComboBox Example\");\r\n" + //
+                    "        setSize(300, 150);\r\n" + //
+                    "        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        String[] cities = {\"Solapur\", \"Pune\", \"Banglore\", \"Mumbai\"};\r\n" + //
+                    "        cityComboBox = new JComboBox<>(cities);\r\n" + //
+                    "        cityComboBox.addActionListener(this);\r\n" + //
+                    "        currentCityLabel = new JLabel(\"You are in \");\r\n" + //
+                    "        add(cityComboBox);\r\n" + //
+                    "        add(currentCityLabel);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    @Override\r\n" + //
+                    "    public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "        if (e.getSource() == cityComboBox) {\r\n" + //
+                    "            String selectedCity = (String) cityComboBox.getSelectedItem();\r\n" + //
+                    "            currentCityLabel.setText(\"You are in \" + selectedCity);\r\n" + //
+                    "        }\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        SwingUtilities.invokeLater(() -> {\r\n" + //
+                    "            Practical_6_1 example = new Practical_6_1();\r\n" + //
+                    "            example.setVisible(true);\r\n" + //
+                    "        });\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2)\tWrite a programme to develop a frame to select the different states of India using JComboBox .\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_6_2 extends JFrame implements ActionListener {\r\n" + //
+                    "    private JComboBox<String> stateComboBox;\r\n" + //
+                    "    private JLabel selectedStateLabel;\r\n" + //
+                    "    public Practical_6_2() {\r\n" + //
+                    "        setTitle(\"Indian State Selection\");\r\n" + //
+                    "        setSize(500, 300);\r\n" + //
+                    "        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        String[] states = {\r\n" + //
+                    "            \"Andhra Pradesh\", \"Arunachal Pradesh\", \"Assam\", \"Bihar\", \"Chhattisgarh\",\r\n" + //
+                    "            \"Goa\", \"Gujarat\", \"Haryana\", \"Himachal Pradesh\", \"Jharkhand\",\r\n" + //
+                    "            \"Karnataka\", \"Kerala\", \"Madhya Pradesh\", \"Maharashtra\", \"Manipur\",\r\n" + //
+                    "            \"Meghalaya\", \"Mizoram\", \"Nagaland\", \"Odisha\", \"Punjab\",\r\n" + //
+                    "            \"Rajasthan\", \"Sikkim\", \"Tamil Nadu\", \"Telangana\", \"Tripura\",\r\n" + //
+                    "            \"Uttar Pradesh\", \"Uttarakhand\", \"West Bengal\"\r\n" + //
+                    "        };\r\n" + //
+                    "        stateComboBox = new JComboBox<>(states);\r\n" + //
+                    "        stateComboBox.addActionListener(this);\r\n" + //
+                    "        selectedStateLabel = new JLabel(\"Selected State: \");\r\n" + //
+                    "        add(new JLabel(\"Select a state: \"));\r\n" + //
+                    "        add(stateComboBox);\r\n" + //
+                    "        add(selectedStateLabel);\r\n" + //
+                    "    }\r\n" + //
+                    "    @Override\r\n" + //
+                    "    public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "        if (e.getSource() == stateComboBox) {\r\n" + //
+                    "            String selectedState = (String) stateComboBox.getSelectedItem();\r\n" + //
+                    "            selectedStateLabel.setText(\"Selected State: \" + selectedState);\r\n" + //
+                    "        }\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        SwingUtilities.invokeLater(() -> {\r\n" + //
+                    "            Practical_6_2 frame = new Practical_6_2();\r\n" + //
+                    "            frame.setVisible(true);\r\n" + //
+                    "        });\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "1)\tDevelop a programme to demonstrate the use of ScrollPane in Swings.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "public class Practical_6_3 extends JFrame {\r\n" + //
+                    "    public Practical_6_3() {\r\n" + //
+                    "        setTitle(\"ScrollPane Example\");\r\n" + //
+                    "        setSize(300, 200);\r\n" + //
+                    "        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n" + //
+                    "        JTextArea textArea = new JTextArea(10, 30);\r\n" + //
+                    "        textArea.setText(\"Hello This program Is developed by soham mahajan Demonstraters\\n" + //
+                    "\"\r\n" + //
+                    "                + \"The use of ScrollPane in advance Java programming using Swing.\");\r\n" + //
+                    "        JScrollPane scrollPane = new JScrollPane(textArea);\r\n" + //
+                    "        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);\r\n" + //
+                    "        add(scrollPane);\r\n" + //
+                    "        setLocationRelativeTo(null);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        SwingUtilities.invokeLater(() -> {\r\n" + //
+                    "            Practical_6_3 example = new Practical_6_3();\r\n" + //
+                    "            example.setVisible(true);\r\n" + //
+                    "        });\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         JP.add(bp);
+    }
+    private void openWindowForButton7() {
+        JFrame individualWindow1 = new JFrame("Practical 7");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_7_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_7_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_7_3();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "Q1. Develop a program to demonstrate the use of tree component in swing.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import javax.swing.tree.DefaultMutableTreeNode;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_7_1 extends JFrame {\r\n" + //
+                    "    public Practical_7_1() {\r\n" + //
+                    "        setTitle(\"JTree Component Demo\");\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        JTree tree;\r\n" + //
+                    "        DefaultMutableTreeNode root = new DefaultMutableTreeNode(\"Root\");\r\n" + //
+                    "        DefaultMutableTreeNode n1 = new DefaultMutableTreeNode(\"Node 1\");\r\n" + //
+                    "        DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(\"Node 2\");\r\n" + //
+                    "        DefaultMutableTreeNode n3 = new DefaultMutableTreeNode(\"Node 3\");\r\n" + //
+                    "        root.add(n1);\r\n" + //
+                    "        root.add(n2);\r\n" + //
+                    "        root.add(n3);\r\n" + //
+                    "        tree = new JTree(root);\r\n" + //
+                    "        JScrollPane treeScrollPane = new JScrollPane(tree);\r\n" + //
+                    "        getContentPane().add(treeScrollPane);\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        setSize(300, 400);\r\n" + //
+                    "        setLocationRelativeTo(null);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_7_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "Q2. Write a program code to generate the following output.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import javax.swing.tree.DefaultMutableTreeNode;;\r\n" + //
+                    "public class Practical_7_2 { \r\n" + //
+                    "    JFrame f;\r\n" + //
+                    "        JTree tree;\r\n" + //
+                    "    Practical_7_2(){\r\n" + //
+                    "        f = new JFrame();\r\n" + //
+                    "     f.setLayout(new BorderLayout());\r\n" + //
+                    "     DefaultMutableTreeNode top = new DefaultMutableTreeNode(\"India\");\r\n" + //
+                    "     DefaultMutableTreeNode a = new DefaultMutableTreeNode(\"Maharashtra\");\r\n" + //
+                    "     top.add(a);\r\n" + //
+                    "     DefaultMutableTreeNode a1 = new DefaultMutableTreeNode(\"Mumbai\");\r\n" + //
+                    "     a.add(a1);\r\n" + //
+                    "     DefaultMutableTreeNode a2 = new DefaultMutableTreeNode(\"New Delhi\");\r\n" + //
+                    "     a.add(a2);\r\n" + //
+                    "     DefaultMutableTreeNode a3 = new DefaultMutableTreeNode(\"Nagpur\");\r\n" + //
+                    "     a.add(a3);\r\n" + //
+                    "     DefaultMutableTreeNode a4 = new DefaultMutableTreeNode(\"Pune\");\r\n" + //
+                    "     a.add(a4);\t\r\n" + //
+                    "     DefaultMutableTreeNode b = new DefaultMutableTreeNode(\"Gujrat\");\r\n" + //
+                    "     top.add(b);\r\n" + //
+                    "     tree = new JTree(top);\r\n" + //
+                    "     JScrollPane jsp = new JScrollPane(tree);\r\n" + //
+                    "     f.add(jsp, BorderLayout.CENTER);\r\n" + //
+                    "     f.setSize(300, 300);\r\n" + //
+                    "     f.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "      new Practical_7_2();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "Q3. Write a Jtree program to show root directory and its subFolders of your System.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import javax.swing.tree.DefaultMutableTreeNode;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_7_3 {\r\n" + //
+                    "    JTree tree;\r\n" + //
+                    "    JFrame f;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_7_3() {\r\n" + //
+                    "        f = new JFrame(\"JTree Example\");\r\n" + //
+                    "        f.setLayout(new BorderLayout());\r\n" + //
+                    "        DefaultMutableTreeNode head = new DefaultMutableTreeNode(\"System\");\r\n" + //
+                    "        DefaultMutableTreeNode top = new DefaultMutableTreeNode(\"Quick Access\");\r\n" + //
+                    "        DefaultMutableTreeNode top1 = new DefaultMutableTreeNode(\"This PC\");\r\n" + //
+                    "        DefaultMutableTreeNode top2 = new DefaultMutableTreeNode(\"Network\");\r\n" + //
+                    "        DefaultMutableTreeNode top3 = new DefaultMutableTreeNode(\"Pictures\");\r\n" + //
+                    "        head.add(top);\r\n" + //
+                    "        head.add(top1);\r\n" + //
+                    "        head.add(top2);\r\n" + //
+                    "        head.add(top3);\r\n" + //
+                    "        DefaultMutableTreeNode t1 = new DefaultMutableTreeNode(\"Desktop\");\r\n" + //
+                    "        DefaultMutableTreeNode t2 = new DefaultMutableTreeNode(\"Documents\");\r\n" + //
+                    "        DefaultMutableTreeNode t3 = new DefaultMutableTreeNode(\"Download\");\r\n" + //
+                    "        DefaultMutableTreeNode t4 = new DefaultMutableTreeNode(\"Music\");\r\n" + //
+                    "        DefaultMutableTreeNode t5 = new DefaultMutableTreeNode(\"Pictures\");\r\n" + //
+                    "        DefaultMutableTreeNode t6 = new DefaultMutableTreeNode(\"Videos\");\r\n" + //
+                    "        DefaultMutableTreeNode t7 = new DefaultMutableTreeNode(\"Local Disk (C:)\");\r\n" + //
+                    "        DefaultMutableTreeNode t8 = new DefaultMutableTreeNode(\"New Volume (D:)\");\r\n" + //
+                    "        DefaultMutableTreeNode t9 = new DefaultMutableTreeNode(\"New Volume (D:)\");\r\n" + //
+                    "        DefaultMutableTreeNode t10 = new DefaultMutableTreeNode(\"New Volume (S:)\");\r\n" + //
+                    "        top1.add(t1);\r\n" + //
+                    "        top1.add(t2);\r\n" + //
+                    "        top1.add(t3);\r\n" + //
+                    "        top1.add(t4);\r\n" + //
+                    "        top1.add(t5);\r\n" + //
+                    "        top1.add(t6);\r\n" + //
+                    "        top1.add(t7);\r\n" + //
+                    "        top1.add(t8);\r\n" + //
+                    "        top1.add(t9);\r\n" + //
+                    "        top1.add(t10);\r\n" + //
+                    "        DefaultMutableTreeNode x1 = new DefaultMutableTreeNode(\"Dart\");\r\n" + //
+                    "        DefaultMutableTreeNode x2 = new DefaultMutableTreeNode(\"Intel\");\r\n" + //
+                    "        DefaultMutableTreeNode x3 = new DefaultMutableTreeNode(\"Java\");\r\n" + //
+                    "        DefaultMutableTreeNode x4 = new DefaultMutableTreeNode(\"PerfLogs\");\r\n" + //
+                    "        DefaultMutableTreeNode x5 = new DefaultMutableTreeNode(\"Program Files\");\r\n" + //
+                    "        DefaultMutableTreeNode x6 = new DefaultMutableTreeNode(\"Program Files(x86)\");\r\n" + //
+                    "        DefaultMutableTreeNode x7 = new DefaultMutableTreeNode(\"Users\");\r\n" + //
+                    "        DefaultMutableTreeNode x8 = new DefaultMutableTreeNode(\"Windows\");\r\n" + //
+                    "        t7.add(x1);\r\n" + //
+                    "        t7.add(x2);\r\n" + //
+                    "        t7.add(x3);\r\n" + //
+                    "        t7.add(x4);\r\n" + //
+                    "        t7.add(x5);\r\n" + //
+                    "        t7.add(x6);\r\n" + //
+                    "        t7.add(x7);\r\n" + //
+                    "        t7.add(x8);\r\n" + //
+                    "        DefaultMutableTreeNode d1 = new DefaultMutableTreeNode(\"Dart Programs\");\r\n" + //
+                    "        DefaultMutableTreeNode d2 = new DefaultMutableTreeNode(\"Soham Mahajan\");\r\n" + //
+                    "        t8.add(d1);\r\n" + //
+                    "        t8.add(d2);\r\n" + //
+                    "        DefaultMutableTreeNode z1 = new DefaultMutableTreeNode(\"AJP Pr\");\r\n" + //
+                    "        DefaultMutableTreeNode z2 = new DefaultMutableTreeNode(\"JS Pr\");\r\n" + //
+                    "        DefaultMutableTreeNode z3 = new DefaultMutableTreeNode(\"Python Pr\");\r\n" + //
+                    "        d2.add(z1);\r\n" + //
+                    "        d2.add(z2);\r\n" + //
+                    "        d2.add(z3);\r\n" + //
+                    "        DefaultMutableTreeNode e1 = new DefaultMutableTreeNode(\"Syllabus\");\r\n" + //
+                    "        DefaultMutableTreeNode e2 = new DefaultMutableTreeNode(\"Notes\");\r\n" + //
+                    "        DefaultMutableTreeNode e3 = new DefaultMutableTreeNode(\"PPT's\");\r\n" + //
+                    "        DefaultMutableTreeNode e4 = new DefaultMutableTreeNode(\"Text Books\");\r\n" + //
+                    "        t9.add(e1);\r\n" + //
+                    "        t9.add(e2);\r\n" + //
+                    "        t9.add(e3);\r\n" + //
+                    "        t9.add(e4);\r\n" + //
+                    "        tree = new JTree(head);\r\n" + //
+                    "        JScrollPane jsp = new JScrollPane(tree);\r\n" + //
+                    "        f.add(jsp, BorderLayout.CENTER);\r\n" + //
+                    "        f.setSize(300, 300);\r\n" + //
+                    "        f.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_7_3();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         JP.add(bp);
+    }
+    private void openWindowForButton8() {
+        JFrame individualWindow1 = new JFrame("Practical 8");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+       
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_8_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_8_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_8_3();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "Q1. Develop a program to demonstrate the use of JTable.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import javax.swing.table.DefaultTableModel;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_8_1 extends JFrame {\r\n" + //
+                    "    private JTable table;\r\n" + //
+                    "    private DefaultTableModel tableModel;\r\n" + //
+                    "\t\r\n" + //
+                    "    public Practical_8_1() {\r\n" + //
+                    "        setTitle(\"JTable Component Example\");\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        String[] columnNames = {\"ID\", \"Name\", \"Roll no.\"};\r\n" + //
+                    "        Object[][] data = {\r\n" + //
+                    "            {1, \"Soham Mahajan\", 21},\r\n" + //
+                    "            {2, \"Hariom Yannawar\", 11},\r\n" + //
+                    "            {3, \"Rohan Donerao\", 18},\r\n" + //
+                    "            {4, \"Aniket Shikhre\", 47},\r\n" + //
+                    "           {5, \"Omkar Mahajan\", 25},\r\n" + //
+                    "            {6, \"Shravan Palikundwar\", 27},\r\n" + //
+                    "        };\r\n" + //
+                    "        tableModel = new DefaultTableModel(data, columnNames);\r\n" + //
+                    "        table = new JTable(tableModel);\r\n" + //
+                    "        JScrollPane tableScrollPane = new JScrollPane(table);\r\n" + //
+                    "        getContentPane().add(tableScrollPane);\r\n" + //
+                    "        setSize(400, 300);\r\n" + //
+                    "        setLocationRelativeTo(null);\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        \r\n" + //
+                    "            new Practical_8_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "Q2. Write a program code to generate the following output.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_8_2 {\r\n" + //
+                    "\r\n" + //
+                    "    JFrame f;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_8_2() {\r\n" + //
+                    "        f = new JFrame(\"JTabel Output\");\r\n" + //
+                    "        String rows[][] = {\r\n" + //
+                    "                { \"101\", \"Amit\", \"670000\" },\r\n" + //
+                    "                { \"102\", \"Jai\", \"780000\" },\r\n" + //
+                    "                { \"101\", \"Sachin\", \"700000\" }\r\n" + //
+                    "        };\r\n" + //
+                    "\r\n" + //
+                    "        String columns[] = { \"ID\", \"NAME\", \"SALARY\" };\r\n" + //
+                    "\r\n" + //
+                    "        JTable jt = new JTable(rows, columns);\r\n" + //
+                    "        jt.setBounds(30, 40, 200, 300);\r\n" + //
+                    "        JScrollPane sp = new JScrollPane(jt);\r\n" + //
+                    "        f.add(sp);\r\n" + //
+                    "        f.setSize(300, 400);\r\n" + //
+                    "        f.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_8_2();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "Q3. Write a Java program to create a table of Name of Student, Percentage and Grade of 10 students using JTable.\r\n" + //
+                    "import javax.swing.JFrame;\r\n" + //
+                    "import javax.swing.JScrollPane;\r\n" + //
+                    "import javax.swing.JTable;\r\n" + //
+                    "public class Practical_8_3 extends JFrame{\r\n" + //
+                    "    JFrame fr;\r\n" + //
+                    "    Practical_8_3()\r\n" + //
+                    "    {\r\n" + //
+                    "        fr = new JFrame();\r\n" + //
+                    "        String rows[][] = {\r\n" + //
+                    "            {\"Rohan Donerao\",\"90%\",\"A\"},\r\n" + //
+                    "            {\"Aniket Shikhare\",\"91%\",\"A+\"},\r\n" + //
+                    "            {\"Omkar Mahajan\",\"80%\",\"B\"},\r\n" + //
+                    "            {\"Soham Mahajan\",\"95%\",\"A+\"},\r\n" + //
+                    "            {\"Mahesh Giri\",\"85%\",\"B\"},\r\n" + //
+                    "            {\"Hariom Yannawar\",\"90%\",\"A\"},\r\n" + //
+                    "            {\"Sham Pawde\",\"36%\",\"Pass\"},\r\n" + //
+                    "            {\"Ajay Gupta\",\"60%\",\"D\"},\r\n" + //
+                    "            {\"Tilak Verma\",\"86%\",\"B\"},\r\n" + //
+                    "            {\"Ravi Thakur\",\"35%\",\"Pass\"},\r\n" + //
+                    "        };\r\n" + //
+                    "        String columns[] = {\"Name\",\"Percentage\",\"Grade\"};\r\n" + //
+                    "        JTable jt = new JTable(rows,columns);\r\n" + //
+                    "        jt.setBounds(30, 40, 500, 300);\r\n" + //
+                    "        JScrollPane sp = new JScrollPane(jt);\r\n" + //
+                    "        fr.add(sp);\r\n" + //
+                    "        fr.setSize(500, 300);\r\n" + //
+                    "        fr.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_8_3();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);  JP.add(bp);
+    }
+    private void openWindowForButton9() {
+        JFrame individualWindow1 = new JFrame("Individual Window");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_9_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_9_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_9_3();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "Q1 Write a program code to generate the following output.\r\n" + //
+                    "import javax.swing.JFrame;\r\n" + //
+                    "import javax.swing.JProgressBar;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_9_1 extends JFrame {\r\n" + //
+                    "\r\n" + //
+                    "    JProgressBar jb;\r\n" + //
+                    "    int i = 0, num = 0;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_9_1() {\r\n" + //
+                    "\r\n" + //
+                    "        jb = new JProgressBar(0, 2000);\r\n" + //
+                    "        jb.setBounds(40, 40, 160, 30);\r\n" + //
+                    "        jb.setValue(0);\r\n" + //
+                    "        jb.setStringPainted(true);\r\n" + //
+                    "        add(jb);\r\n" + //
+                    "        setTitle(\"ProgressBar Example\");\r\n" + //
+                    "        setSize(250, 150);\r\n" + //
+                    "        setLayout(null);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void iterate() {\r\n" + //
+                    "        while (i <= 2000) {\r\n" + //
+                    "            jb.setValue(i);\r\n" + //
+                    "            i = i + 20;\r\n" + //
+                    "\r\n" + //
+                    "            try {\r\n" + //
+                    "                Thread.sleep(150);\r\n" + //
+                    "            } catch (Exception e)\r\n" + //
+                    "            {\r\n" + //
+                    "            }\r\n" + //
+                    "        }\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Practical_9_1 p = new Practical_9_1();\r\n" + //
+                    "        p.iterate();\r\n" + //
+                    "        p.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "Q2 Develop a program to demonstrate the use of JProgressBar.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "public class Practical_9_2 extends JFrame {\r\n" + //
+                    "    private JProgressBar progressBar;\r\n" + //
+                    "    private JButton startButton;\r\n" + //
+                    "    public Practical_9_2() {\r\n" + //
+                    "        setTitle(\"JProgressBar Demo\");\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        progressBar = new JProgressBar(0, 100);\r\n" + //
+                    "        progressBar.setStringPainted(true);\r\n" + //
+                    "        startButton = new JButton(\"Start\");\r\n" + //
+                    "        startButton.addActionListener(new ActionListener() {\r\n" + //
+                    "            @Override\r\n" + //
+                    "            public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "                startButton.setEnabled(false);\r\n" + //
+                    "                simulateProgress();\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        add(progressBar);\r\n" + //
+                    "        add(startButton);\r\n" + //
+                    "        setSize(300, 150);\r\n" + //
+                    "        setLocationRelativeTo(null);\r\n" + //
+                    "    }\r\n" + //
+                    "    private void simulateProgress() {\r\n" + //
+                    "        Thread thread = new Thread(new Runnable() {\r\n" + //
+                    "            @Override\r\n" + //
+                    "            public void run() {\r\n" + //
+                    "                for (int i = 0; i <= 100; i++) {\r\n" + //
+                    "                    final int progressValue = i;\r\n" + //
+                    "                    SwingUtilities.invokeLater(new Runnable() {\r\n" + //
+                    "                        @Override\r\n" + //
+                    "                        public void run() {\r\n" + //
+                    "                            progressBar.setValue(progressValue);\r\n" + //
+                    "                        }\r\n" + //
+                    "                    });\r\n" + //
+                    "                    try {\r\n" + //
+                    "                        Thread.sleep(100);\r\n" + //
+                    "                    } catch (InterruptedException ex) {\r\n" + //
+                    "                        ex.printStackTrace();\r\n" + //
+                    "                    }\r\n" + //
+                    "                }\r\n" + //
+                    "                SwingUtilities.invokeLater(new Runnable() {\r\n" + //
+                    "                    @Override\r\n" + //
+                    "                    public void run() {\r\n" + //
+                    "                        startButton.setEnabled(true);\r\n" + //
+                    "                    }\r\n" + //
+                    "                });\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "        thread.start();\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "         new Practical_9_2();   \r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "Q3 Write a Program using JProgressBar to show the progress of Progressbar when user clicks on JButton.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "public class Practical_9_2 extends JFrame {\r\n" + //
+                    "    private JProgressBar progressBar;\r\n" + //
+                    "    private JButton startButton;\r\n" + //
+                    "    public Practical_9_2() {\r\n" + //
+                    "        setTitle(\"JProgressBar Demo\");\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        progressBar = new JProgressBar(0, 100);\r\n" + //
+                    "        progressBar.setStringPainted(true);\r\n" + //
+                    "        startButton = new JButton(\"Start\");\r\n" + //
+                    "        startButton.addActionListener(new ActionListener() {\r\n" + //
+                    "            @Override\r\n" + //
+                    "            public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "                startButton.setEnabled(false);\r\n" + //
+                    "                simulateProgress();\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        add(progressBar);\r\n" + //
+                    "        add(startButton);\r\n" + //
+                    "        setSize(300, 150);\r\n" + //
+                    "        setLocationRelativeTo(null);\r\n" + //
+                    "    }\r\n" + //
+                    "    private void simulateProgress() {\r\n" + //
+                    "        Thread thread = new Thread(new Runnable() {\r\n" + //
+                    "            @Override\r\n" + //
+                    "            public void run() {\r\n" + //
+                    "                for (int i = 0; i <= 100; i++) {\r\n" + //
+                    "                    final int progressValue = i;\r\n" + //
+                    "                    SwingUtilities.invokeLater(new Runnable() {\r\n" + //
+                    "                        @Override\r\n" + //
+                    "                        public void run() {\r\n" + //
+                    "                            progressBar.setValue(progressValue);\r\n" + //
+                    "                        }\r\n" + //
+                    "                    });\r\n" + //
+                    "                    try {\r\n" + //
+                    "                        Thread.sleep(100);\r\n" + //
+                    "                    } catch (InterruptedException ex) {\r\n" + //
+                    "                        ex.printStackTrace();\r\n" + //
+                    "                    }\r\n" + //
+                    "                }\r\n" + //
+                    "                SwingUtilities.invokeLater(new Runnable() {\r\n" + //
+                    "                    @Override\r\n" + //
+                    "                    public void run() {\r\n" + //
+                    "                        startButton.setEnabled(true);\r\n" + //
+                    "                    }\r\n" + //
+                    "                });\r\n" + //
+                    "            }\r\n" + //
+                    "        });\r\n" + //
+                    "        thread.start();\r\n" + //
+                    "    }\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "         new Practical_9_2();   \r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         JP.add(bp);
+    }
+    private void openWindowForButton10() {
+        JFrame individualWindow1 = new JFrame("Practical 10");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+       
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_10_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_10_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_10_3();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1.\tWrite a program to generate KeyEvent when a key is pressed and display “Key Pressed” message.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_10_1 extends Frame implements KeyListener {\r\n" + //
+                    "    Label l;\r\n" + //
+                    "    TextArea a;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_10_1() {\r\n" + //
+                    "        l = new Label();\r\n" + //
+                    "        l.setBounds(20, 50, 100, 20);\r\n" + //
+                    "        l.setBackground(Color.blue);\r\n" + //
+                    "        a = new TextArea();\r\n" + //
+                    "        a.setBounds(20, 80, 300, 300);\r\n" + //
+                    "        a.addKeyListener(this);\r\n" + //
+                    "        add(l);\r\n" + //
+                    "        add(a);\r\n" + //
+                    "        setSize(400, 400);\r\n" + //
+                    "        setLayout(null);\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void keyPressed(KeyEvent e) {\r\n" + //
+                    "        l.setText(\"Key Pressed\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void keyReleased(KeyEvent e) {\r\n" + //
+                    "        l.setText(\"Key Released\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void keyTyped(KeyEvent e) {\r\n" + //
+                    "        l.setText(\"Key Typed\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_10_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2.\tDevelop a program which will implement special keys such as function keys and arrow keys.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.KeyEvent;\r\n" + //
+                    "import java.awt.event.KeyListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_10_2 extends Frame implements KeyListener {\r\n" + //
+                    "    Label l;\r\n" + //
+                    "    TextField t;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_10_2() {\r\n" + //
+                    "        l = new Label();\r\n" + //
+                    "        l.setSize(100, 20);\r\n" + //
+                    "        t = new TextField(40);\r\n" + //
+                    "        t.addKeyListener(this);\r\n" + //
+                    "        add(l);\r\n" + //
+                    "        add(t);\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        setSize(400, 400);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void keyTyped(KeyEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void keyPressed(KeyEvent e) {\r\n" + //
+                    "        int key = e.getKeyCode();\r\n" + //
+                    "        switch (key) {\r\n" + //
+                    "            case KeyEvent.VK_F1:\r\n" + //
+                    "                l.setText(\" F1 \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_F2:\r\n" + //
+                    "                l.setText(\" F2 \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_F3:\r\n" + //
+                    "                l.setText(\" F3 \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_F4:\r\n" + //
+                    "                l.setText(\" F4 \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_F5:\r\n" + //
+                    "                l.setText(\" F5 \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_UP:\r\n" + //
+                    "                l.setText(\" UP \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_DOWN:\r\n" + //
+                    "                l.setText(\" DOWN \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_LEFT:\r\n" + //
+                    "                l.setText(\" LEFT \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            case KeyEvent.VK_RIGHT:\r\n" + //
+                    "                l.setText(\" RIGHT \");\r\n" + //
+                    "                break;\r\n" + //
+                    "            default:\r\n" + //
+                    "                l.setText(\" NO SPECIAL KEY \");\r\n" + //
+                    "        }\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    @Override\r\n" + //
+                    "    public void keyReleased(KeyEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_10_2();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "3.\tDevelop a program to accept two numbers and display product of two numbers when user pressed “Multiply” button.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "class Practical_10_3 extends Frame implements ActionListener {\r\n" + //
+                    "    Label l;\r\n" + //
+                    "    Label l1;\r\n" + //
+                    "    Label l2;\r\n" + //
+                    "    TextField t1;\r\n" + //
+                    "    TextField t2;\r\n" + //
+                    "    int str;\r\n" + //
+                    "    int str1;\r\n" + //
+                    "    int str3;\r\n" + //
+                    "    Button b1;\r\n" + //
+                    "    TextField product;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_10_3() {\r\n" + //
+                    "        l = new Label(\"Enter 2 Numbers\");\r\n" + //
+                    "        l.setSize(20, 20);\r\n" + //
+                    "        add(l);\r\n" + //
+                    "        t1 = new TextField(20);\r\n" + //
+                    "        add(t1);\r\n" + //
+                    "        l1 = new Label(\"X\");\r\n" + //
+                    "        l1.setSize(20, 20);\r\n" + //
+                    "        add(l1);\r\n" + //
+                    "        t2 = new TextField(20);\r\n" + //
+                    "        add(t2);\r\n" + //
+                    "        l2 = new Label(\"=\");\r\n" + //
+                    "        l2.setSize(20, 20);\r\n" + //
+                    "        add(l2);\r\n" + //
+                    "        product = new TextField(20);\r\n" + //
+                    "        add(product);\r\n" + //
+                    "        b1 = new Button(\"Multiply\");\r\n" + //
+                    "        add(b1);\r\n" + //
+                    "        b1.addActionListener(this);\r\n" + //
+                    "        setSize(400, 400);\r\n" + //
+                    "        setLayout(new FlowLayout(FlowLayout.LEFT, 60, 40));\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "        str = Integer.parseInt((t1.getText()));\r\n" + //
+                    "        str1 = Integer.parseInt(new String(t2.getText()));\r\n" + //
+                    "        str3 = (str * str1);\r\n" + //
+                    "        product.setText(String.valueOf(str3));\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_10_3();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         JP.add(bp);
+    }
+    private void openWindowForButton11() {
+        JFrame individualWindow1 = new JFrame("Practical 11");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+       
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_11_1();
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_11_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_11_3();
+            }
+        });
+             }
+         });
+         JButton pr4= new JButton("Question 4");
+        pr4.setSize(40, 30);
+         pr4.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_11_4();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1.\tWrite a program to count the number of clicks performed by the user in a Frame window.\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.MouseEvent;\r\n" + //
+                    "import java.awt.event.MouseListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_11_1 extends Frame implements MouseListener {\r\n" + //
+                    "    int flag = 0;\r\n" + //
+                    "    Label l;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_11_1() {\r\n" + //
+                    "        l = new Label();\r\n" + //
+                    "        add(l);\r\n" + //
+                    "        addMouseListener(this);\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "        setSize(400, 400);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mousePressed(MouseEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseReleased(MouseEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseEntered(MouseEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseExited(MouseEvent e) {\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseClicked(MouseEvent e) {\r\n" + //
+                    "        setBackground(Color.BLACK);\r\n" + //
+                    "        flag++;\r\n" + //
+                    "        l.setText(\"NO. OF CLICKS = \" + flag);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_11_1();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2.\tWrite a program to demonstrate the use of mouseDragged and mouseMoved method of MouseMotionListener:\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "class Practical_11_3 extends Frame implements MouseMotionListener {\r\n" + //
+                    "    Label l;\r\n" + //
+                    "\r\n" + //
+                    "    Practical_11_3() {\r\n" + //
+                    "        l = new Label();\r\n" + //
+                    "        l.setBackground(Color.RED);\r\n" + //
+                    "        add(l);\r\n" + //
+                    "        addMouseMotionListener(this);\r\n" + //
+                    "        setSize(400, 400);\r\n" + //
+                    "        setLayout(new FlowLayout());\r\n" + //
+                    "        setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseDragged(MouseEvent e) {\r\n" + //
+                    "        Graphics g = getGraphics();\r\n" + //
+                    "        g.setColor(Color.red);\r\n" + //
+                    "        g.fillOval(e.getX(), e.getY(), 20, 20);\r\n" + //
+                    "        l.setBackground(Color.RED);\r\n" + //
+                    "        setBackground(Color.BLACK);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseMoved(MouseEvent e) {\r\n" + //
+                    "        l.setText(\"Mouse Moved\");\r\n" + //
+                    "        l.setBackground(Color.GREEN);\r\n" + //
+                    "        setBackground(Color.WHITE);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        new Practical_11_3();\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "3.\tDebug the following Program code and write the output\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_11_4 extends JFrame implements MouseListener {\r\n" + //
+                    "    private JLabel label;\r\n" + //
+                    "\r\n" + //
+                    "    public Practical_11_4() {\r\n" + //
+                    "        setTitle(\"Mouse Demo\");\r\n" + //
+                    "        setSize(300, 200);\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(null);\r\n" + //
+                    "        label = new JLabel(\"Hello Mouse\");\r\n" + //
+                    "        label.setBounds(50, 150, 200, 100);\r\n" + //
+                    "        add(label);\r\n" + //
+                    "        addMouseListener(this);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mousePressed(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Pressed; # of clicks: \" + e.getClickCount() +\r\n" + //
+                    "                \" at position \" + e.getX() + \", \" + e.getY());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseReleased(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Released; # of clicks: \" + e.getClickCount());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseEntered(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Entered\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseExited(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Exited\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseClicked(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Clicked; # of clicks: \" + e.getClickCount());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Practical_11_4 frame = new Practical_11_4();\r\n" + //
+                    "        frame.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q4 = new JTextArea();
+         q4.setText(
+            "4.\tDebug the following Program code and write the output\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.event.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_11_4 extends JFrame implements MouseListener {\r\n" + //
+                    "    private JLabel label;\r\n" + //
+                    "\r\n" + //
+                    "    public Practical_11_4() {\r\n" + //
+                    "        setTitle(\"Mouse Demo\");\r\n" + //
+                    "        setSize(300, 200);\r\n" + //
+                    "        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "        setLayout(null);\r\n" + //
+                    "        label = new JLabel(\"Hello Mouse\");\r\n" + //
+                    "        label.setBounds(50, 150, 200, 100);\r\n" + //
+                    "        add(label);\r\n" + //
+                    "        addMouseListener(this);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mousePressed(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Pressed; # of clicks: \" + e.getClickCount() +\r\n" + //
+                    "                \" at position \" + e.getX() + \", \" + e.getY());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseReleased(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Released; # of clicks: \" + e.getClickCount());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseEntered(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Entered\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseExited(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Exited\");\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public void mouseClicked(MouseEvent e) {\r\n" + //
+                    "        label.setText(\"Mouse Clicked; # of clicks: \" + e.getClickCount());\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        Practical_11_4 frame = new Practical_11_4();\r\n" + //
+                    "        frame.setVisible(true);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr4.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         bp.add(pr4);
+         bp.add(q4);
+         JP.add(bp);
+    }
+    private void openWindowForButton12() {
+        JFrame individualWindow1 = new JFrame("Practical 12");
+        individualWindow1.setSize(1500 , 800);
+        individualWindow1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JPanel JP = new JPanel();
+        JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
+        JP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane SP =  new JScrollPane(JP);
+        SP.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SP.setSize(1500 , 800);
+        JP.setSize(1500 , 800);
+        individualWindow1.setLayout(new BorderLayout());
+        individualWindow1.add(SP,BorderLayout.CENTER);
+        SP.setPreferredSize(new Dimension(600, 400)); 
+        individualWindow1.setLocationRelativeTo(null);
+        individualWindow1.setVisible(true);
+        JPanel bp = new JPanel();
+        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
+        bp.setSize(500, 500);
+        JButton pr1= new JButton("Question 1");
+        pr1.setSize(100, 100);
+         pr1.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_12_1(20);
+            }
+        });
+             }
+         });
+         JButton pr2= new JButton("Question 2");
+        pr2.setSize(40, 30);
+         pr2.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_12_2();
+            }
+        });
+             }
+         });
+         JButton pr3= new JButton("Question 3");
+        pr3.setSize(40, 30);
+         pr3.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_12_3();
+            }
+        });
+             }
+         });
+         JButton pr4= new JButton("Question 4");
+        pr4.setSize(40, 30);
+         pr4.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Practical_12_4();
+            }
+        });
+             }
+         });
+         JTextArea q1 = new JTextArea();
+         q1.setText(
+            "1.\tWrite a program using JPasswordField to set the password character as ‘#’ instead of ‘*’\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_12_1 extends JPasswordField {\r\n" + //
+                    "    \r\n" + //
+                    "    public Practical_12_1(int columns) {\r\n" + //
+                    "        super(columns);\r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    @Override\r\n" + //
+                    "    public char getEchoChar() {\r\n" + //
+                    "        return '#'; \r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        \r\n" + //
+                    "            JFrame frame = new JFrame(\"Custom Password Field Example\");\r\n" + //
+                    "            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "            frame.setLayout(new FlowLayout());\r\n" + //
+                    "\r\n" + //
+                    "            Practical_12_1 passwordField = new Practical_12_1(20);\r\n" + //
+                    "            passwordField.setEchoChar('#');\r\n" + //
+                    "\r\n" + //
+                    "            JButton showPasswordButton = new JButton(\"Show Password\");\r\n" + //
+                    "            showPasswordButton.addActionListener(e -> {\r\n" + //
+                    "                char echoChar = passwordField.getEchoChar();\r\n" + //
+                    "                if (echoChar == 0) {\r\n" + //
+                    "                    passwordField.setEchoChar('#');\r\n" + //
+                    "                } else {\r\n" + //
+                    "                    passwordField.setEchoChar((char) 0); \r\n" + //
+                    "                }\r\n" + //
+                    "            });\r\n" + //
+                    "            frame.add(passwordField);\r\n" + //
+                    "            frame.add(showPasswordButton);\r\n" + //
+                    "            frame.pack();\r\n" + //
+                    "            frame.setVisible(true);\r\n" + //
+                    "            frame.setSize(500, 200);\r\n" + //
+                    "        }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q2 = new JTextArea();
+         q2.setText(
+            "2.\tWrite a programme using JPasswordField and JTextField to demonstrate the use of user authentication.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_12_2 {\r\n" + //
+                    "    private static final String VALID_USERNAME = \"user123\";\r\n" + //
+                    "    private static final String VALID_PASSWORD = \"password123\";\r\n" + //
+                    "\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "       \r\n" + //
+                    "            JFrame frame = new JFrame(\"User Authentication Demo\");\r\n" + //
+                    "            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "            frame.setLayout(new BorderLayout());\r\n" + //
+                    "\r\n" + //
+                    "            JPanel loginPanel = new JPanel(new GridLayout(3, 2, 10, 10));\r\n" + //
+                    "            JLabel usernameLabel = new JLabel(\"Username:\");\r\n" + //
+                    "            JLabel passwordLabel = new JLabel(\"Password:\");\r\n" + //
+                    "            JTextField usernameField = new JTextField();\r\n" + //
+                    "            JPasswordField passwordField = new JPasswordField();\r\n" + //
+                    "            JButton loginButton = new JButton(\"Login\");\r\n" + //
+                    "\r\n" + //
+                    "            loginButton.addActionListener(new ActionListener() {\r\n" + //
+                    "                @Override\r\n" + //
+                    "                public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "                    String username = usernameField.getText();\r\n" + //
+                    "                    char[] passwordChars = passwordField.getPassword();\r\n" + //
+                    "                    String password = new String(passwordChars);\r\n" + //
+                    "\r\n" + //
+                    "                    if (isValidUser(username, password)) {\r\n" + //
+                    "                        JOptionPane.showMessageDialog(frame, \"Login Successful!\");\r\n" + //
+                    "                    } else {\r\n" + //
+                    "                        JOptionPane.showMessageDialog(frame, \"Invalid Username or Password\", \"Error\", JOptionPane.ERROR_MESSAGE);\r\n" + //
+                    "                    }\r\n" + //
+                    "\r\n" + //
+                    "                    passwordField.setText(\"\");\r\n" + //
+                    "                }\r\n" + //
+                    "            });\r\n" + //
+                    "\r\n" + //
+                    "            loginPanel.add(usernameLabel);\r\n" + //
+                    "            loginPanel.add(usernameField);\r\n" + //
+                    "            loginPanel.add(passwordLabel);\r\n" + //
+                    "            loginPanel.add(passwordField);\r\n" + //
+                    "            loginPanel.add(loginButton);\r\n" + //
+                    "\r\n" + //
+                    "            frame.add(loginPanel, BorderLayout.CENTER);\r\n" + //
+                    "            frame.setSize(300, 150);\r\n" + //
+                    "            frame.setLocationRelativeTo(null);\r\n" + //
+                    "            frame.setVisible(true);\r\n" + //
+                    "       \r\n" + //
+                    "    }\r\n" + //
+                    "\r\n" + //
+                    "    private static boolean isValidUser(String username, String password) {\r\n" + //
+                    "        return username.equals(VALID_USERNAME) && password.equals(VALID_PASSWORD);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q3 = new JTextArea();
+         q3.setText(
+            "3.\tWrite a program using JTextField to perform the addition of two numbers.\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_12_3 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "       \r\n" + //
+                    "            JFrame frame = new JFrame(\"Addition Program\");\r\n" + //
+                    "            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "            frame.setLayout(new BorderLayout());\r\n" + //
+                    "\r\n" + //
+                    "            JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));\r\n" + //
+                    "\r\n" + //
+                    "            JTextField numField1 = new JTextField();\r\n" + //
+                    "            JTextField numField2 = new JTextField();\r\n" + //
+                    "            JButton addButton = new JButton(\"Add\");\r\n" + //
+                    "            JTextField resultField = new JTextField();\r\n" + //
+                    "\r\n" + //
+                    "            addButton.addActionListener(new ActionListener() {\r\n" + //
+                    "                @Override\r\n" + //
+                    "                public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "                    try {\r\n" + //
+                    "                        double num1 = Double.parseDouble(numField1.getText());\r\n" + //
+                    "                        double num2 = Double.parseDouble(numField2.getText());\r\n" + //
+                    "                        double result = num1 + num2;\r\n" + //
+                    "                        resultField.setText(Double.toString(result));\r\n" + //
+                    "                    } catch (NumberFormatException ex) {\r\n" + //
+                    "                        resultField.setText(\"Invalid input\");\r\n" + //
+                    "                    }\r\n" + //
+                    "                }\r\n" + //
+                    "            });\r\n" + //
+                    "\r\n" + //
+                    "            inputPanel.add(new JLabel(\"Number 1:\"));\r\n" + //
+                    "            inputPanel.add(numField1);\r\n" + //
+                    "            inputPanel.add(new JLabel(\"Number 2:\"));\r\n" + //
+                    "            inputPanel.add(numField2);\r\n" + //
+                    "\r\n" + //
+                    "            frame.add(inputPanel, BorderLayout.NORTH);\r\n" + //
+                    "            frame.add(addButton, BorderLayout.CENTER);\r\n" + //
+                    "            frame.add(resultField, BorderLayout.SOUTH);\r\n" + //
+                    "\r\n" + //
+                    "            resultField.setEditable(false); \r\n" + //
+                    "\r\n" + //
+                    "            frame.setSize(300, 150);\r\n" + //
+                    "            frame.setLocationRelativeTo(null);\r\n" + //
+                    "            frame.setVisible(true);\r\n" + //
+                    "        \r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         JTextArea q4 = new JTextArea();
+         q4.setText(
+            "4.\tWrite a program using JPasswordField to accept password from user and if the length is less than 6 characters then error message should be displayed “Password length must be >6 characters”\r\n" + //
+                    "import javax.swing.*;\r\n" + //
+                    "import java.awt.*;\r\n" + //
+                    "import java.awt.event.ActionEvent;\r\n" + //
+                    "import java.awt.event.ActionListener;\r\n" + //
+                    "\r\n" + //
+                    "public class Practical_12_4 {\r\n" + //
+                    "    public static void main(String[] args) {\r\n" + //
+                    "        \r\n" + //
+                    "            JFrame frame = new JFrame(\"Password Validation Program\");\r\n" + //
+                    "            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n" + //
+                    "            frame.setLayout(new BorderLayout());\r\n" + //
+                    "\r\n" + //
+                    "            JPanel inputPanel = new JPanel(new FlowLayout());\r\n" + //
+                    "            JPasswordField passwordField = new JPasswordField(20);\r\n" + //
+                    "            JButton submitButton = new JButton(\"Submit\");\r\n" + //
+                    "\r\n" + //
+                    "            submitButton.addActionListener(new ActionListener() {\r\n" + //
+                    "                @Override\r\n" + //
+                    "                public void actionPerformed(ActionEvent e) {\r\n" + //
+                    "                    char[] passwordChars = passwordField.getPassword();\r\n" + //
+                    "                    String password = new String(passwordChars);\r\n" + //
+                    "\r\n" + //
+                    "                    if (password.length() < 6) {\r\n" + //
+                    "                        JOptionPane.showMessageDialog(frame, \"Password length must be > 6 characters\", \"Error\", JOptionPane.ERROR_MESSAGE);\r\n" + //
+                    "                    } else {\r\n" + //
+                    "                        JOptionPane.showMessageDialog(frame, \"Password is valid!\");\r\n" + //
+                    "                    }\r\n" + //
+                    "\r\n" + //
+                    "                    passwordField.setText(\"\");\r\n" + //
+                    "                }\r\n" + //
+                    "            });\r\n" + //
+                    "\r\n" + //
+                    "            inputPanel.add(new JLabel(\"Enter Password:\"));\r\n" + //
+                    "            inputPanel.add(passwordField);\r\n" + //
+                    "            inputPanel.add(submitButton);\r\n" + //
+                    "\r\n" + //
+                    "            frame.add(inputPanel, BorderLayout.CENTER);\r\n" + //
+                    "\r\n" + //
+                    "            frame.setSize(300, 150);\r\n" + //
+                    "            frame.setLocationRelativeTo(null);\r\n" + //
+                    "            frame.setVisible(true);\r\n" + //
+                    "            frame.setSize(300, 200);\r\n" + //
+                    "    }\r\n" + //
+                    "}\r\n" + //
+                    ""
+         );
+         pr1.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr2.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr3.setAlignmentX(Component.CENTER_ALIGNMENT);
+         pr4.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.setAlignmentX(Component.CENTER_ALIGNMENT);
+         bp.add(q1);
+         bp.add(pr1);
+         bp.add(q2);
+         bp.add(pr2);
+         bp.add(q3);
+         bp.add(pr3);
+         bp.add(q4);
+         bp.add(pr4);
+         JP.add(bp);
+    }
+
+    
+        
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new LoginApp().setVisible(true);
+            }
+        });
+    }
+}
